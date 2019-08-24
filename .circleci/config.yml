@@ -128,7 +128,7 @@ jobs:
             sudo cp .now/production.json now.json && now --public --token=$NOW_TOKEN && now --token=$NOW_TOKEN alias
 
 
-
+ 
 workflows:
   version: 2
   build-deploy-develop:
@@ -153,3 +153,18 @@ workflows:
             branches:
               only: /^master$/
   
+  build-deploy-production:
+    jobs:
+      - production-green:
+          filters:
+            branches:
+              only: /^master/
+
+      - hold-before-real:
+          type: approval
+          requires:
+            - production-green
+
+      - production:
+          requires:
+            - hold-before-real

@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "jike-lecture8",
-  "alias": "kritoyuan.now.sh",
+  "alias": "kritoyuan-jike-production.now.sh",
   "builds": [
     {
       "src": "package.json",
