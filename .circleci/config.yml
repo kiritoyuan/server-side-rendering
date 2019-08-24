@@ -146,12 +146,6 @@ workflows:
             branches:
               only: /^test$/
 
-  build-deploy-production:
-    jobs:
-      - production:
-          filters:
-            branches:
-              only: /^master$/
   
   build-deploy-production:
     jobs:
