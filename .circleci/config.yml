@@ -86,7 +86,7 @@ jobs:
           command: |
             sudo cp .now/test.json now.json && now --public --token=$NOW_TOKEN && now --token=$NOW_TOKEN alias
 
-  production-geeen;
+  production-geeen:
     docker;
       - image: circleci/node:10.16.0-stretch
     
