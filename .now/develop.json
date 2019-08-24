@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "jike-lecture8-develop",
-  "alias": "kiritoyuan-develop.now.sh",
+  "alias": "kiritoyuan-jike-develop.now.sh",
   "builds": [
     {
       "src": "package.json",
