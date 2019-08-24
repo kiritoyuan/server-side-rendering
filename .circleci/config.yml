@@ -146,10 +146,19 @@ workflows:
             branches:
               only: /^test$/
 
+  
   build-deploy-production:
     jobs:
-      - production:
+      - production-green:
           filters:
             branches:
-              only: /^master$/
-  
+              only: /^master/
+
+      - hold-before-real:
+          type: approval
+          requires:
+            - production-green
+
+      - production:
+          requires:
+            - hold-before-real
