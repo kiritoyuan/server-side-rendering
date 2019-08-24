@@ -86,6 +86,33 @@ jobs:
           command: |
             sudo cp .now/test.json now.json && now --public --token=$NOW_TOKEN && now --token=$NOW_TOKEN alias
 
+  production-geeen:
+    docker:
+      - image: circleci/node:10.16.0-stretch
+    
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - restore_cache:
+        keys:
+        - v1-dependencies-{{checksum "package.json"}}
+        - v1-dependencies-
+      
+      - run:
+        name: Install Now
+        command: sudo npm install --global --unsafe-perm now@16.1.1
+
+      - run: 
+        name: Build packages
+        command: sudo npm run build
+
+      - run:
+        name: Deploy develop env to Now.sh
+        command: |
+          sudo cp .now/production-green.json now.json && now --public --token=$NOW_TOKEN && now --token=@Now_TOKEN alias
+         
   production:
     docker:
       # specify the version you desire here
