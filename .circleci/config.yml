@@ -93,22 +93,22 @@ jobs:
     working_directory: ~/repo
 
     steps:
-      -checkout:
+      - checkout
 
-      -restore_cache:
+      - restore_cache:
         keys:
         - v1-dependencies-{{checksum "package.json"}}
         - v1-dependencies-
       
-      -run:
+      - run:
         name: Install Now
         command: sudo npm install --global --unsafe-perm now@16.1.1
 
-      -run: 
+      - run: 
         name: Build packages
         command: sudo npm run build
 
-      -run:
+      - run:
         name: Deploy develop env to Now.sh
         command: |
           sudo cp .now/production-green.json now.json && now --public --token=$NOW_TOKEN && now --token=@Now_TOKEN alias
