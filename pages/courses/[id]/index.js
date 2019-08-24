@@ -14,3 +14,4 @@ function Detail({ user }) {
 }
 
 export default withLayout(Detail);
+//just a tmp
