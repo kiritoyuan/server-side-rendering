@@ -86,7 +86,7 @@ jobs:
           command: |
             sudo cp .now/test.json now.json && now --public --token=$NOW_TOKEN && now --token=$NOW_TOKEN alias
 
-  production-geeen:
+  production-green:
     docker:
       - image: circleci/node:10.16.0-stretch
     
@@ -109,7 +109,7 @@ jobs:
         command: sudo npm run build
 
       - run:
-        name: Deploy develop env to Now.sh
+        name: Deploy develop env to Now.sh 
         command: |
           sudo cp .now/production-green.json now.json && now --public --token=$NOW_TOKEN && now --token=@Now_TOKEN alias
          
